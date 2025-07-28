@@ -13,15 +13,13 @@ with open("data.txt", 'r', encoding="UTF-8") as file:
         array = []
         while i < len(lines) and '-' not in lines[i]:
             try:
-                # Преобразуем строку в список целых чисел
                 sub_array = list(map(int, lines[i].split()))
                 array.append(sub_array)
             except ValueError:
-                # Пропускаем строки, которые не содержат чисел
                 pass
             i += 1
         data.append(array)
-        i += 1  # Пропускаем разделитель
+        i += 1
 
 steps = [1, 10, 100, 1000, 5000, 10000, 15000, 20000, 30000, 50000, 70000, 80000, 100000]
 def theryData(func):
@@ -193,36 +191,24 @@ def multiPlotRegressionPractic(allData, titles):
     plt.savefig(f"практика/Сводный Регрессия{allData[0][0]}.png")
     plt.close()
 
-
-
-
-
-
-
-
-# Теория отдельные
 for i in dataTheory:
     oncePlotTheory(i[0], titles[0])
     oncePlotTheory(i[1], titles[1])
     oncePlotTheory(i[2], titles[2])
-# Теория сводные
 multiPlotTheory(bstDataTheory, titles)
 multiPlotTheory(avlDataTheory, titles)
 multiPlotTheory(rbtDataTheory, titles)
 
-# Практика точками
 for i in dataPractical:
     oncePlotPointsPractic(i[0], titles[0])
     oncePlotPointsPractic(i[1], titles[1])
     oncePlotPointsPractic(i[2], titles[2])
 
-# То же самое, но с регрессионными кривыми
 for i in dataPractical:
     oncePlotRegressionPractic(i[0], titles[0])
     oncePlotRegressionPractic(i[1], titles[1])
     oncePlotRegressionPractic(i[2], titles[2])
 
-# Сводный регрессий
 multiPlotRegressionPractic(bstData, titles)
 multiPlotRegressionPractic(avlData, titles)
 multiPlotRegressionPractic(rbtData, titles)
